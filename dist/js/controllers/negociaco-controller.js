@@ -6,11 +6,21 @@ export class NegociacaoController {
         this.inputValor = document.querySelector('#valor');
     }
     adiciona() {
+        const negociacao = this.criaNegociacao();
+        console.log(negociacao);
+        this.limparFormulario();
+    }
+    criaNegociacao() {
         const ex = /-/g;
         const date = new Date(this.inputData.value.replace(ex, ','));
         const quantidade = parseInt(this.inputQuantidade.value);
         const valor = parseFloat(this.inputValor.value);
-        const negociaco = new Negociacao(date, quantidade, valor);
-        console.log(negociaco);
+        return new Negociacao(date, quantidade, valor);
+    }
+    limparFormulario() {
+        this.inputData.value = "";
+        this.inputQuantidade.value = "";
+        this.inputValor.value = "";
+        this.inputData.focus();
     }
 }

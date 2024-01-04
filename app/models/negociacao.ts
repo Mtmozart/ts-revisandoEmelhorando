@@ -1,5 +1,5 @@
 export class Negociacao {
-    private _data: Date;
+ /*   private _data: Date;
     private _quantidade: number;
     private _valor: number;
 
@@ -7,21 +7,19 @@ export class Negociacao {
         this._data = data;
         this._quantidade = quantidade;
         this._valor = valor;
-    }
+    }*/
+
+    //método ts de fazer as coisas
+    constructor(
+        //se eu dizer public readonly deixa o método como se fosse private e acessivel pelo get
+        private _data: Date,public readonly quantidade: number, public readonly valor: number) {}
 
     get data():Date {
-        return this._data;
+        const data = new Date(this._data.getTime())
+        return data
     }
-
-    get quantidade(): number {
-        return this._quantidade;
-    }
-
-    get valor():number {
-        return this._valor;
-    }
-
+ 
     get volume():number {
-        return this._quantidade * this._valor;
+        return this.quantidade * this.valor;
     }
 }
